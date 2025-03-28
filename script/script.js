@@ -7,7 +7,12 @@ const koptekst = document.querySelector("h1")
 const kleinetekst = document.querySelector("p")
 
 
+const minimaalbonus = 0.2
+let bonusnummer = Math.random()
+
+
 let Mannetje = document.querySelector("#foto")
+
 
 //zandloper selector
 let zandloperframes = document.querySelector("#zandloper")
@@ -56,8 +61,17 @@ function frame5(){
     kleinetekst.textContent = "Hij is gevallen!"
 }
 
- 
 
+
+//Zeldzame bonus (if else)
+if (bonusnummer <= minimaalbonus){
+    console.log ("Bonusronde!")
+
+    koptekst.textContent = "BONUSRONDE"
+}
+else {
+    console.log ("normale ronde")
+}
 
 
 
@@ -75,15 +89,20 @@ function resetzandloper(){
     kleinetekst.textContent = "Je hebt hem gered!"
 
     Mannetje.src = "images/afbeeldingmannetje3.png"
-}
 
+
+    if (bonusnummer <= minimaalbonus){
+        
+        Mannetje.src = "images/bonusfoto.png"
+    
+        koptekst.textContent = "Gefeliciteert!"
+        kleinetekst.textContent = "Aanschouw hier de bonus foto"
+    }
+    else {
+        console.log ("geen bonus prijs")
+    }
+}
 
 
 // eventlisteners
 buttonStop.addEventListener("click", resetzandloper)
-
-
-
- 
-
-
